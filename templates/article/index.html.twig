@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles{% endblock %}
+
+{% block body %}
+    {% for article in articles %}
+        <h4>Designation: {{ article.designation }}</h4>
+        <p>Desc: {{ article.description }}</p>
+        <p>Prix: {{ article.prix|price }}</p>
+        <p>Qte: {{ article.quantiteDisponible }}</p>
+        <p>Fournisseur: {{ article.fournisseur.libelle }}, {{ article.fournisseur.adresse.adresse1 }}, {{ article.fournisseur.adresse.ville }} {{ article.fournisseur.adresse.codePostal }}</p>
+{#        {{ 5|stars|raw }}#}
+        {% if article.tags is not empty %}
+            <h5>Tags</h5>
+            {% for tag in article.tags %}
+                {{ tag.label }}
+            {% endfor %}
+        {% endif %}
+        <br>
+        <br>
+    {% endfor %}
+{% endblock %}

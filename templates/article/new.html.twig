@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formulaire Article{% endblock %}
+
+{% block body %}
+<h1>Formulaire Article</h1>
+
+    {% form_theme form 'bootstrap_5_layout.html.twig' %}
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+    <div class="row">
+        {{ form_row(form.description) }}
+        {{ form_row(form.designation) }}
+    </div>
+    <div class="row">
+        {{ form_row(form.quantiteDisponible) }}
+        {{ form_row(form.prix) }}
+    </div>
+    <div class="row">
+        {{ form_row(form.fournisseur) }}
+    </div>
+    <div class="row">
+        <ul class="tags"
+            data-index="{{ form.tags|length > 0 ? form.tags|last.vars.name + 1 : 0 }}"
+            data-prototype="{{ form_widget(form.tags.vars.prototype)|e('html_attr') }}"
+        >
+            <div data-gb-custom-block data-tag="for">
+                {% for tag in form.tags %}
+                    <li>{{ form_row(tag.libelle) }}</li>
+                {% endfor %}
+            </div>
+            <button type="button" class="add_item_link" data-collection-holder-class="tags">Add a tag</button>
+        </ul>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Créer</button>
+{{ form_end(form) }}
+{% endblock %}

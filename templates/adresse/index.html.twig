@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Adresses{% endblock %}
+
+{% block body %}
+    {% for adresse in adresses %}
+        <h4>ID: {{ adresse.id }}</h4>
+        <h4>Adresse: {{ adresse.adresse1 }}</h4>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fournisseurs{% endblock %}
+
+{% block body %}
+    {% for fournisseur in fournisseurs %}
+        <h4>Nom: {{ fournisseur.libelle }}</h4>
+        <h4>Adresse: {{ fournisseur.adresse.adresse1 }}</h4>
+    {% endfor %}
+{% endblock %}
